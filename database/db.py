@@ -48,4 +48,13 @@ class Database:
             year INTEGER NOT NULL
         );
         """
+
+        customer_table = """
+        CREATE TABLE IF NOT EXISTS customer (
+            cust_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            first_name TEXT NOT NULL,
+            last_name TEXT  NOT NULL
+        );
+        """
         self.execute_query(car_table)
+        self.execute_query(customer_table)
