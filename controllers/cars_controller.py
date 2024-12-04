@@ -34,8 +34,20 @@ class CarsController:
                 
     def add_car(self) -> None:
         make = self.view.get_input("Enter car make: ")
+        if not make or make is None:
+            self.view.display_message("Car make cannot be empty or None!")
+            return 
+               
         model = self.view.get_input("Enter car model: ")
-        year = self.view.get_input("Enter car year: ")
+        if not model or model is None:
+            self.view.display_message("Car model cannot be empty or None!")
+            return
+        
+        year = int(self.view.get_input("Enter car year: "))
+        if not year or year is None or year < 1900:
+            self.view.display_message("Car year cannot be empty, None or less than 1900!")
+            return
+
         car = Car(make, model, year)
         self.cars_db.insert_car(car)
         self.view.display_message("Car added successfully.")

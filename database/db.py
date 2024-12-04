@@ -18,7 +18,7 @@ class Database:
             self.connection.close()
             self.connection = None
 
-    def execute_query(self, query: str, params: tuple = ()) -> None:
+    def execute_query(self, query: str, params: tuple=()) -> None:
         if not self.connection:
             raise RuntimeError("Database not connected")
         cursor = self.connection.cursor()

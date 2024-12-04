@@ -7,11 +7,11 @@ class View:
         return input("Choose an option")
     
     def display_message(self, message: str) -> str:
-        print(message)
+        print(f"\n{message}")
         
     def display_items(self, items: list) -> str:
         if not items:
-            print("No items to display.")
+            print("\nNo items to display.")
         else:
             for item in items:
                 print(str(item))
