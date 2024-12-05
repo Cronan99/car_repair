@@ -56,5 +56,17 @@ class Database:
             last_name TEXT  NOT NULL
         );
         """
+        
+        #Fixa så att SQL fungerar för reparation
+        reparation_table = """
+        CREATE TABLE IF NOT EXISTS repair (
+            repair_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            cust_id INTEGER,
+            car_id INTEGER,
+            FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
+            FOREIGN KEY (car_id) REFERENCES cars(car_id)
+        );
+        """
+        self.execute_query(reparation_table)
         self.execute_query(car_table)
         self.execute_query(customer_table)
